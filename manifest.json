@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Cadichris Github",
+  "description": "Extension pour Github",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "js": ["github.js"],
+      "matches": ["https://github.com/betagouv/mon-service-securise/pull/*"]
+    }
+  ]
+}
