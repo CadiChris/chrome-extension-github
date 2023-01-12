@@ -3,11 +3,13 @@
 //   https://developer.chrome.com/docs/extensions/mv3/getstarted/tut-reading-time/
 
 document.addEventListener('keypress', (event) => {
-  if (estCtrlShiftC(event)) copieDansPressePapiers(phraseDePR())
+  if (estCtrlShift('C', event)) copieDansPressePapiers(phraseDePR())
+  if (estCtrlShift('A', event)) copieDansPressePapiers(prApprouvee())
+  if (estCtrlShift('M', event)) copieDansPressePapiers(prVaEtreMergee())
 })
 
-function estCtrlShiftC(event) {
-  return event.shiftKey && event.ctrlKey && event.key === 'C';
+function estCtrlShift(char, event) {
+  return event.shiftKey && event.ctrlKey && event.key === char;
 }
 
 function copieDansPressePapiers(texte) {
@@ -16,6 +18,14 @@ function copieDansPressePapiers(texte) {
 
 function phraseDePR() {
   return `:git-pull-request: La PR \`${titrePR()}\` `;
+}
+
+function prApprouvee() {
+  return `:git-pull-request: :white_check_mark: La PR \`${titrePR()}\` est approuvée `;
+}
+
+function prVaEtreMergee() {
+  return `:merged: Je vais merger la PR \`${titrePR()}\`.`
 }
 
 function titrePR() {
