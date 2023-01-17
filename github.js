@@ -4,6 +4,7 @@
 
 document.addEventListener('keypress', (event) => {
   if (estCtrlShift('C', event)) copieDansPressePapiers(phraseDePR())
+  if (estCtrlShift('R', event)) copieDansPressePapiers(reviewDePR())
   if (estCtrlShift('A', event)) copieDansPressePapiers(prApprouvee())
   if (estCtrlShift('M', event)) copieDansPressePapiers(prVaEtreMergee())
 })
@@ -20,8 +21,12 @@ function phraseDePR() {
   return `:git-pull-request: La PR \`${titrePR()}\` `;
 }
 
+function reviewDePR() {
+  return `:git-pull-request: :eyes: Je relis la PR \`${titrePR()}\`.`;
+}
+
 function prApprouvee() {
-  return `:git-pull-request: :white_check_mark: La PR \`${titrePR()}\` est approuvée `;
+  return `:git-pull-request: :white_check_mark: La PR \`${titrePR()}\` est approuvée.`;
 }
 
 function prVaEtreMergee() {
